@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/content"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:paddingBottom="@dimen/margin_tiny"
+	android:paddingLeft="@dimen/margin_tiny"
+	android:paddingRight="@dimen/margin_tiny"
+	android:paddingTop="@dimen/margin_tiny"
+	tools:context="go.wikipedi.wikipedigo.activity.MainActivity_">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/rv_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+		<Button
+			android:id="@+id/btn_fetch_more"
+			android:backgroundTint="@color/colorPrimary"
+			android:layout_gravity="center"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/btn_fetch_more"/>
+
+	</LinearLayout>
+</ScrollView>
