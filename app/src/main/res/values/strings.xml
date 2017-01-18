@@ -2,4 +2,6 @@
 	<string name="app_name">Wikipedigo</string>
 
 	<string name="btn_fetch_more">Show More</string>
+	<string name="text_igo_not_found">IGO not found</string>
+	<string name="text_search_igo">Search IGO</string>
 </resources>

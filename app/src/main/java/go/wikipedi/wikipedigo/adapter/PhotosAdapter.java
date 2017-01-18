@@ -2,10 +2,12 @@ package go.wikipedi.wikipedigo.adapter;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import go.wikipedi.base.OnItemSelectedListener;
 import go.wikipedi.base.RecyclerViewAdapterBase;
 import go.wikipedi.base.ViewWrapper;
 import go.wikipedi.wikipedigo.model.PhotoDB;
@@ -18,13 +20,15 @@ import go.wikipedi.wikipedigo.view.ItemPhotoView_;
 
 public class PhotosAdapter extends RecyclerViewAdapterBase<PhotoDB, ItemPhotoView> {
 
-	private static final int MAX_ITEM = 20;
+	private static final int MAX_ITEM = 21;
 
 	private int itemCount = 0;
+	private OnItemSelectedListener onItemSelectedListener;
 
-	public PhotosAdapter(Context context, List<PhotoDB> items) {
+	public PhotosAdapter(Context context, List<PhotoDB> items, OnItemSelectedListener listener) {
 		super(context, items);
 		itemCount = MAX_ITEM;
+		onItemSelectedListener = listener;
 	}
 
 	@Override
@@ -33,15 +37,22 @@ public class PhotosAdapter extends RecyclerViewAdapterBase<PhotoDB, ItemPhotoVie
 	}
 
 	@Override
-	public void onBindViewHolder(ViewWrapper<ItemPhotoView> holder, int position) {
+	public void onBindViewHolder(ViewWrapper<ItemPhotoView> holder, final int position) {
 		PhotoDB item = getItem(position);
 		if (item != null) {
 			holder.getView().bind(getItem(position));
+			holder.getView().setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					onItemSelectedListener.onItemSelected(position);
+				}
+			});
 		}
 	}
 
 	public void setItems(List<PhotoDB> items) {
 		this.items = items;
+		resetItemCount();
 		notifyDataSetChanged();
 	}
 
@@ -66,5 +77,12 @@ public class PhotosAdapter extends RecyclerViewAdapterBase<PhotoDB, ItemPhotoVie
 			itemCount = items.size();
 		}
 		notifyDataSetChanged();
+	}
+
+	private void resetItemCount() {
+		itemCount = MAX_ITEM;
+		if (itemCount > items.size()) {
+			itemCount = items.size();
+		}
 	}
 }

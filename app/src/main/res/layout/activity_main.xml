@@ -12,22 +12,30 @@
 	tools:context="go.wikipedi.wikipedigo.activity.MainActivity_">
 
 	<LinearLayout
-		android:orientation="vertical"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="match_parent"
+		android:orientation="vertical">
 
-	<android.support.v7.widget.RecyclerView
-		android:id="@+id/rv_container"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"/>
+		<android.support.v7.widget.RecyclerView
+			android:id="@+id/rv_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
 
 		<Button
 			android:id="@+id/btn_fetch_more"
-			android:backgroundTint="@color/colorPrimary"
-			android:layout_gravity="center"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:backgroundTint="@color/colorPrimary"
 			android:text="@string/btn_fetch_more"/>
+
+		<TextView
+			android:id="@+id/tv_alert"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="@string/text_igo_not_found"
+			android:visibility="gone"/>
 
 	</LinearLayout>
 </ScrollView>

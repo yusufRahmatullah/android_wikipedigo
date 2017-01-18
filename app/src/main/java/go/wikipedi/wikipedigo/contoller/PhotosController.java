@@ -2,6 +2,9 @@ package go.wikipedi.wikipedigo.contoller;
 
 import android.content.SharedPreferences;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,8 @@ public class PhotosController {
 
 	private static final String FETCH_ERROR = "Error while fetching photos";
 	private static final String PHOTOS_COLUMN = "photosColumn";
+	private static final Type PHOTOS_TYPE = new TypeToken<List<PhotoDB>>(){}.getType();
+
 	public static final String PHOTOS_PREF = "photosPreference";
 
 	//region singleton
@@ -43,9 +48,9 @@ public class PhotosController {
 			@Override
 			public void onResponse(Call<List<PhotoDB>> call, Response<List<PhotoDB>> response) {
 				if (sharedPreferences != null) {
-					String json = APIRequest.getInstance().getGson().toJson(response.body(), PhotoDB.class);
+					String json = APIRequest.getInstance().getGson().toJson(response.body(), PHOTOS_TYPE);
 					if (!json.equals("")) {
-						sharedPreferences.edit().putString(PHOTOS_COLUMN, json);
+						sharedPreferences.edit().putString(PHOTOS_COLUMN, json).commit();
 					}
 				}
 				photos = response.body();
@@ -55,6 +60,12 @@ public class PhotosController {
 			@Override
 			public void onFailure(Call<List<PhotoDB>> call, Throwable t) {
 				t.printStackTrace();
+				if (sharedPreferences != null) {
+					String json = sharedPreferences.getString(PHOTOS_COLUMN, "");
+					if (!json.equals("")) {
+						photos = APIRequest.getInstance().getGson().fromJson(json, PHOTOS_TYPE);
+					}
+				}
 			}
 		});
 	}
@@ -104,8 +115,14 @@ public class PhotosController {
 		}
 	}
 
-	public void searchPhotos(BaseRunnable<List<PhotoDB>> onFound) {
-
+	public void searchPhotos(String query, BaseRunnable<List<PhotoDB>> onFound) {
+		List<PhotoDB> result = new ArrayList<>();
+		for (int i = 0; i < photos.size(); i++) {
+			if (photos.get(i).isContains(query)) {
+				result.add(photos.get(i));
+			}
+		}
+		onFound.run(result);
 	}
 
 	public List<PhotoDB> getPhotos() {
