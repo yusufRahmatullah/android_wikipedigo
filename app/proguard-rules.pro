@@ -15,3 +15,29 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+# General Configuration
+-dontskipnonpubliclibraryclasses
+-forceprocessing
+-optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
+-optimizationpasses 5
+-allowaccessmodification
+
+# Suppress warnings if you are NOT using IAP:
+-dontwarn com.squareup.**
+-dontwarn org.joda.time.**
+-dontwarn java.nio.file.**
+-dontwarn org.codehaus.mojo.**
+-dontwarn retrofit2.**
+-dontwarn com.flurry.**
+
+# Preserve this classes
+-keep class * extends android.app.Activity
+
+# Do not minify this library
+-keep class com.flurry.** { *; }
+-keep class android.support.v4.** { *; }
+-keep class android.support.v7.** { *; }
+
+-keepattributes Signature
+-keepattributes EnclosingMethod
+-keepattributes *Annotation*

@@ -37,5 +37,4 @@ public class ItemPersonalPhotoView extends RelativeLayout{
 				.diskCacheStrategy(DiskCacheStrategy.ALL)
 				.into(imgPhoto);
 	}
-
 }
