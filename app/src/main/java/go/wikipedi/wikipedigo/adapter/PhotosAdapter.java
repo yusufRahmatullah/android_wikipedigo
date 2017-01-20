@@ -23,7 +23,7 @@ import go.wikipedi.wikipedigo.view.ItemPhotoView_;
 
 public class PhotosAdapter extends RecyclerViewAdapterBase<Photo, ItemPhotoView> {
 
-	private static final int MAX_ITEM = 21;
+	private static final int MAX_ITEM = 42;
 
 	private int itemCount = 0;
 	private OnItemSelectedListener onItemSelectedListener;
@@ -59,17 +59,7 @@ public class PhotosAdapter extends RecyclerViewAdapterBase<Photo, ItemPhotoView>
 				}
 			});
 			if (position == itemCount - 1) {
-				holder.getView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-					@Override
-					public void onGlobalLayout() {
-						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-							holder.getView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-						} else {
-							holder.getView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-						}
-						onLastItemVisibleListener.onLastItemVisible();
-					}
-				});
+				showNextItems();
 			}
 		}
 	}

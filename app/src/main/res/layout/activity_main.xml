@@ -1,48 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/content"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	android:paddingLeft="@dimen/margin_tiny"
-	android:paddingRight="@dimen/margin_tiny"
+	android:layout_height="match_parent"
 	tools:context="go.wikipedi.wikipedigo.activity.MainActivity_">
 
-	<LinearLayout
-		android:id="@+id/innerLayout"
+	<FrameLayout
+		android:id="@+id/fragmentContainer"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical">
-
-		<ImageView
-			android:id="@+id/img_full"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:adjustViewBounds="true"
-			android:scaleType="fitCenter"/>
-
-		<TextView
-			android:id="@+id/tv_full"
-			style="@style/NameAppearance"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="@dimen/margin_small"/>
-
-		<android.support.v7.widget.RecyclerView
-			android:id="@+id/rv_container"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"/>
-
-		<TextView
-			android:id="@+id/tv_alert"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="@dimen/margin_small"
-			android:gravity="center_horizontal"
-			android:text="@string/text_igo_not_found"
-			/>
-
-	</LinearLayout>
-</android.support.v4.widget.SwipeRefreshLayout>
+		android:layout_height="match_parent" />
+</LinearLayout>

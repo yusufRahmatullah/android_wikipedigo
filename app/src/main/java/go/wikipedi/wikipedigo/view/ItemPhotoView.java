@@ -1,6 +1,8 @@
 package go.wikipedi.wikipedigo.view;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;

@@ -44,5 +44,9 @@ public class Photo {
 		this.image = image;
 	}
 
+	public Photo copy() {
+		return new Photo(name, image);
+	}
+
 	//endregion
 }
