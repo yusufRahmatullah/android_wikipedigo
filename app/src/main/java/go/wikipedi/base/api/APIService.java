@@ -2,6 +2,7 @@ package go.wikipedi.base.api;
 
 import java.util.List;
 
+import go.wikipedi.wikipedigo.model.Photo;
 import go.wikipedi.wikipedigo.model.PhotoDB;
 import go.wikipedi.wikipedigo.model.URLInfo;
 import retrofit2.Call;
@@ -15,8 +16,8 @@ import retrofit2.http.Path;
 
 public interface APIService {
 
-	@GET("97t2j")
-	Call<List<PhotoDB>> getPhotos();
+	@GET("vn4cb")
+	Call<List<Photo>> getPhotos();
 
 	@GET("1dekej")
 	Call<URLInfo> getURLInfo();

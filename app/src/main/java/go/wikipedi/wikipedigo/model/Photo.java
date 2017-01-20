@@ -9,41 +9,23 @@ import com.google.gson.annotations.SerializedName;
 
 public class Photo {
 
-	@SerializedName("id")
-	@Expose
-	long id;
-
 	@SerializedName("name")
 	@Expose
 	String name;
 
-	@SerializedName("link")
+	@SerializedName("image")
 	@Expose
-	String link;
+	String image;
 
-	@SerializedName("favorite_count")
-	@Expose
-	int favoriteCount;
-
-	@SerializedName("img_link")
-	@Expose
-	String imageLink;
+	public boolean isContains(String text) {
+		return name.toLowerCase().contains(text.toLowerCase());
+	}
 
 	//region cons, get-set
-	public Photo(long id, String name, int favoriteCount, String link, String imageLink) {
-		this.id = id;
+
+	public Photo(String name, String imageLink) {
 		this.name = name;
-		this.favoriteCount = favoriteCount;
-		this.link = link;
-		this.imageLink = imageLink;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+		this.image = imageLink;
 	}
 
 	public String getName() {
@@ -54,28 +36,13 @@ public class Photo {
 		this.name = name;
 	}
 
-	public String getLink() {
-		return link;
+	public String getImage() {
+		return image;
 	}
 
-	public void setLink(String link) {
-		this.link = link;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
-	public int getFavoriteCount() {
-		return favoriteCount;
-	}
-
-	public void setFavoriteCount(int favoriteCount) {
-		this.favoriteCount = favoriteCount;
-	}
-
-	public String getImageLink() {
-		return imageLink;
-	}
-
-	public void setImageLink(String imageLink) {
-		this.imageLink = imageLink;
-	}
 	//endregion
 }

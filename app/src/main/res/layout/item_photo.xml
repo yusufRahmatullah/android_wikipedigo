@@ -12,7 +12,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:scaleType="centerCrop"
-		android:src="@mipmap/ic_launcher"/>
+		/>
 
 	<TextView
 		android:id="@+id/tv_name"
@@ -29,7 +29,6 @@
 		android:shadowDx="2"
 		android:shadowDy="2"
 		android:shadowRadius="1.5"
-		android:text="Jessica Alibaba manuqweqkwueghqj weggqjwhegqjwhegqjhwegqjwhegqjwheg"
 		android:textColor="@color/white"
 		android:textSize="@dimen/text_normal"/>
 
