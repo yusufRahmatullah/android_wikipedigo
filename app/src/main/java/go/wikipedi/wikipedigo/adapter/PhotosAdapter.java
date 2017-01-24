@@ -1,11 +1,9 @@
 package go.wikipedi.wikipedigo.adapter;
 
 import android.content.Context;
-import android.os.Build;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 
 import java.util.List;
 
@@ -58,9 +56,6 @@ public class PhotosAdapter extends RecyclerViewAdapterBase<Photo, ItemPhotoView>
 					onItemSelectedListener.onItemSelected(position);
 				}
 			});
-			if (position == itemCount - 1) {
-				showNextItems();
-			}
 		}
 	}
 

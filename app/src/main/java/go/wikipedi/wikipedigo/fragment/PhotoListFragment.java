@@ -1,6 +1,5 @@
 package go.wikipedi.wikipedigo.fragment;
 
-import android.graphics.Rect;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -70,6 +69,15 @@ public class PhotoListFragment extends BaseFragment {
 		container.setAdapter(adapter);
 		layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL, false);
 		container.setLayoutManager(layoutManager);
+		container.addOnScrollListener(new RecyclerView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+				super.onScrollStateChanged(recyclerView, newState);
+				if (newState == RecyclerView.SCROLL_STATE_SETTLING) {
+					adapter.showNextItems();
+				}
+			}
+		});
 		PhotosController.getInstance().fetchPhotos(new Runnable() {
 			@Override
 			public void run() {
